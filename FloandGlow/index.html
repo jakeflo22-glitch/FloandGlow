@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flo & Glow Window Washing | Kent, Ohio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Flo & Glow Window Washing in Kent, Ohio. Exterior window cleaning using pure water-fed poles for spotless glass and better curb appeal." />
+  <style>
+    :root {
+      --primary: #0ea5e9;  /* blue like your logo background */
+      --dark: #0b1120;
+      --light: #f9fafb;
+      --accent: #22c55e;
+      --text-muted: #cbd5f5;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #020617 100%);
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,0.9);
+      border-bottom: 1px solid rgba(148,163,184,0.3);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      background: #38bdf8;
+      object-fit: cover;
+    }
+    .logo-text-main {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+    }
+    .logo-sub {
+      font-size: 0.75rem;
+      opacity: 0.75;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      opacity: 0.8;
+    }
+    .nav-links a:hover {
+      opacity: 1;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #22c55e);
+      color: #022c22;
+      box-shadow: 0 8px 20px rgba(34, 197, 94, 0.45);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(34, 197, 94, 0.7);
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: #e5e7eb;
+    }
+    .btn-ghost:hover {
+      background: rgba(15,23,42,0.9);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 0 3.5rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .badge {
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(56,189,248,0.15);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(56,189,248,0.8);
+      margin-bottom: 1rem;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(56,189,248,0.9);
+    }
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 0.85rem;
+    }
+    .headline-highlight {
+      color: var(--primary);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      max-width: 32rem;
+      opacity: 0.9;
+      margin-bottom: 1.3rem;
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.3rem;
+    }
+    .hero-note {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    .hero-note span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-top: 0.75rem;
+    }
+    .stat-item strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: radial-gradient(circle at top, #0f172a 0, #020617 80%);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.6rem 1.5rem 1.7rem;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.12),
+        transparent 40%,
+        rgba(34,197,94,0.16)
+      );
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .card-tag {
+      font-size: 0.75rem;
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      border: 1px solid rgba(148,163,184,0.7);
+      opacity: 0.9;
+    }
+    .card-body {
+      margin-top: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card-list {
+      list-style: none;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .card-list li {
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .check {
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .card-footer {
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      max-width: 32rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.8rem;
+    }
+    .card-block {
+      background: rgba(15,23,42,0.9);
+      border-radius: 1.2rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.2rem 1.3rem;
+    }
+    .card-block h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+    .muted {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+    .bullet-list {
+      padding-left: 1.1rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .bullet-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Pricing section */
+    .pricing {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .badge-soft {
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(56,189,248,0.15);
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .price-row span:last-child {
+      opacity: 0.9;
+    }
+    .price-note {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 0.6rem;
+    }
+    .highlight-box {
+      background: rgba(56,189,248,0.12);
+      border-radius: 0.9rem;
+      border: 1px dashed rgba(56,189,248,0.7);
+      padding: 0.8rem 0.9rem;
+      font-size: 0.85rem;
+      margin-top: 0.8rem;
+    }
+
+    /* FAQ + Contact */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    details {
+      background: rgba(15,23,42,0.9);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 0.7rem 0.9rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.9rem;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 500;
+    }
+    details p {
+      margin-top: 0.4rem;
+      opacity: 0.9;
+    }
+
+    form {
+      background: rgba(15,23,42,0.9);
+      border-radius: 1rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1rem 1.1rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    .form-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.2rem;
+      opacity: 0.9;
+    }
+    input, textarea, select {
+      width: 100%;
+      background: #020617;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 0.5rem 0.6rem;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.5);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .helper-text {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 0.3rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148,163,184,0.3);
+      padding: 1rem 0 1.5rem;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2,
+      .pricing,
+      .faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding-top: 2rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+      }
+      .hero-card {
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <img src="flo-and-glow-logo.png" alt="Flo & Glow Window Washing logo" class="logo-img" />
+          <div>
+            <div class="logo-text-main">Flo & Glow Window Washing</div>
+            <div class="logo-sub">Exterior glass cleaning for Kent & nearby cities</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="tel:2169065508" class="btn btn-ghost">Call: 216-906-5508</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Exterior window cleaning only
+          </div>
+          <h1>
+            Crystal clear glass, <span class="headline-highlight">no ladders for you.</span>
+          </h1>
+          <p class="hero-sub">
+            Flo & Glow is a local Kent, Ohio exterior-only window washing company using pure water-fed pole systems for streak-free glass on homes and small buildings.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+            <a href="tel:2169065508" class="btn btn-ghost">Or call: 216-906-5508</a>
+          </div>
+          <p class="hero-note">
+            <span>Serving:</span> Kent, Stow, Tallmadge, Ravenna, and surrounding local cities.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>100%</strong>
+              Exterior glass cleaning
+            </div>
+            <div class="stat-item">
+              <strong>Water-fed</strong>
+              Pole system with purified water
+            </div>
+            <div class="stat-item">
+              <strong>Same-week</strong>
+              Appointments available (in season)
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Example window washing package">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Standard Exterior Package</div>
+              <div style="font-size:0.8rem; opacity:0.8;">1–2 story home · exterior glass only</div>
+            </div>
+            <div class="card-tag">Most popular</div>
+          </div>
+
+          <div class="card-body">
+            <ul class="card-list">
+              <li><span class="check">✓</span>Exterior glass cleaned with pure water-fed poles</li>
+              <li><span class="check">✓</span>Upper windows reached safely from the ground</li>
+              <li><span class="check">✓</span>No ladders leaned against your glass</li>
+              <li><span class="check">✓</span>Simple, exterior-only service — in and out</li>
+            </ul>
+
+            <div class="card-footer">
+              <div>
+                <div style="font-size:0.8rem; opacity:0.8;">Typical range</div>
+                <div style="font-weight:600;">$80 – $180</div>
+              </div>
+              <div class="pill">Final price based on window count & access</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2>What we do for you</h2>
+        <p class="section-sub">
+          Exterior glass only. We keep it simple and efficient — you get clean windows without having to climb a ladder or mess with hoses.
+        </p>
+
+        <div class="grid-2">
+          <div class="card-block">
+            <h3>Exterior window washing</h3>
+            <p class="muted">
+              We focus on what most people see first: the outside of your windows. Using a professional pure water-fed pole system, we clean the glass so it dries clear.
+            </p>
+            <ul class="bullet-list">
+              <li>Exterior glass on 1–2 story homes</li>
+              <li>Pure water-fed pole system for a spot-free finish</li>
+              <li>Great for upper windows and hard-to-reach areas</li>
+              <li>No need for you to move ladders or equipment</li>
+            </ul>
+          </div>
+
+          <div class="card-block">
+            <h3>Small building exteriors</h3>
+            <p class="muted">
+              Have a small office, storefront, or rental property? We can keep your exterior glass looking clean for customers and tenants.
+            </p>
+            <ul class="bullet-list">
+              <li>Storefront and entryway glass (exterior only)</li>
+              <li>Simple per-visit or occasional cleanings</li>
+              <li>After-hours or off-peak timing when possible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY WATER-FED POLES -->
+    <section>
+      <div class="container">
+        <h2>Why water-fed pole cleaning?</h2>
+        <p class="section-sub">
+          You’ll see us with long carbon-fiber poles and a brush at the top. That’s a professional water-fed pole system running pure, filtered water —
+          it’s safer for your home and gives a better finish on exterior glass.
+        </p>
+
+        <div class="grid-2">
+          <div class="card-block">
+            <h3>Safer for everyone</h3>
+            <ul class="bullet-list">
+              <li>Most upper windows cleaned from the ground</li>
+              <li>Less time on ladders and roofs</li>
+              <li>We’re not leaning ladders against your glass</li>
+            </ul>
+          </div>
+
+          <div class="card-block">
+            <h3>Spot-free finish</h3>
+            <ul class="bullet-list">
+              <li>Purified water helps glass dry without spotting</li>
+              <li>No soapy film left behind</li>
+              <li>Exterior glass looks cleaner and brighter</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container pricing">
+        <div>
+          <h2>How pricing works</h2>
+          <p class="section-sub">
+            We keep pricing straightforward: it’s based on exterior window count, ease of access, and overall size of the home or building.
+          </p>
+
+          <div class="card-block">
+            <div class="badge-soft">
+              Exterior glass only – no upsell, no extras
+            </div>
+            <div class="price-row">
+              <span>Small home / townhouse</span>
+              <span>~$80 – $130</span>
+            </div>
+            <div class="price-row">
+              <span>Average single-family home</span>
+              <span>~$120 – $180</span>
+            </div>
+            <div class="price-row">
+              <span>Small commercial frontage</span>
+              <span>Varies by job</span>
+            </div>
+            <p class="price-note">
+              These are ballpark ranges. Once we see photos or swing by to look, we’ll send you a clear, final price before we put anything on the schedule.
+            </p>
+            <div class="highlight-box">
+              Text us a few photos of the front, back, and any sides with windows and we can usually quote you the same day.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size:1.1rem; margin-bottom:0.4rem;">Quick quote steps</h3>
+          <ol class="bullet-list">
+            <li><strong>1.</strong> Text us your name, address, and a few photos of your exterior windows.</li>
+            <li><strong>2.</strong> We look at access and window count.</li>
+            <li><strong>3.</strong> We send back a price and a couple of time options.</li>
+            <li><strong>4.</strong> We show up, clean the exterior glass, and you check everything before we leave.</li>
+          </ol>
+          <p class="muted" style="margin-top:0.8rem;">
+            Simple exterior-only service means we’re in and out quickly and you get the visual upgrade you actually notice day to day.
+          </p>
+          <a href="tel:2169065508" class="btn btn-primary" style="margin-top:0.8rem;">Call or text: 216-906-5508</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ + CONTACT -->
+    <section id="faq">
+      <div class="container faq-grid">
+        <div>
+          <h2>FAQ</h2>
+          <p class="section-sub">
+            A few quick answers. If you’re still not sure, just text or email us — we’re happy to talk it through.
+          </p>
+
+          <details open>
+            <summary>Do you only clean exterior windows?</summary>
+            <p>
+              Yes. Flo & Glow is currently focused on exterior glass only. That keeps things simple and fast, and lets us use our pure water-fed pole system for most of the work.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do I need to be home for the cleaning?</summary>
+            <p>
+              Not always. For exterior-only work, as long as we’ve agreed on the scope and can access the areas we need, we can clean while you’re out and text you when we’re done.
+            </p>
+          </details>
+
+          <details>
+            <summary>Will you still use ladders sometimes?</summary>
+            <p>
+              Yes, if needed. Some windows require ladders, but our goal is to safely do as much as possible from the ground using water-fed poles and smart positioning.
+            </p>
+          </details>
+
+          <details>
+            <summary>How often should I have my exterior windows cleaned?</summary>
+            <p>
+              Most homes are fine with 1–2 exterior cleans per year. If you’re near trees, construction dust, or a busy road, you may want more frequent visits.
+            </p>
+          </details>
+        </div>
+
+        <div id="contact">
+          <h2>Get your free quote</h2>
+          <p class="section-sub">
+            Fill this out and we’ll text or email you back with questions and a price. You can also just call or text us directly.
+          </p>
+
+          <form action="mailto:flowandglow@gmail.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div style="flex:1 1 150px;">
+                <label for="name">Name</label>
+                <input id="name" name="Name" type="text" required />
+              </div>
+              <div style="flex:1 1 150px;">
+                <label for="phone">Phone</label>
+                <input id="phone" name="Phone" type="tel" required />
+              </div>
+            </div>
+
+            <div style="margin-top:0.7rem;">
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" />
+            </div>
+
+            <div style="margin-top:0.7rem;">
+              <label for="address">Address (or area)</label>
+              <input id="address" name="Address" type="text" />
+            </div>
+
+            <div style="margin-top:0.7rem;">
+              <label for="service">What are you looking for?</label>
+              <select id="service" name="Service">
+                <option>Exterior windows – small home</option>
+                <option>Exterior windows – average home</option>
+                <option>Exterior windows – larger home</option>
+                <option>Exterior windows – small commercial</option>
+              </select>
+            </div>
+
+            <div style="margin-top:0.7rem;">
+              <label for="message">Anything else we should know?</label>
+              <textarea id="message" name="Message" placeholder="Tell us about window access, any really high panes, or timing preferences."></textarea>
+              <p class="helper-text">
+                For the fastest quote, text a few photos of your exterior windows to: 216-906-5508
+              </p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top:0.9rem; width:100%;">
+              Send quote request
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Flo & Glow Window Washing · Kent, Ohio · Call/Text: 216-906-5508 · flowandglow@gmail.com
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
